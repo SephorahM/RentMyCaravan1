@@ -34,8 +34,7 @@ session_start();
     <h1>Welcome, <?php echo $user_data['username']; ?>!</h1>
     <div class="carousel-inner" style="display: flex; transition: transform 0.5s ease; width: 100%;">
                 <img src="https://www.redocean.co.uk/image/cache/products/27852/image03_2000-1500x1500.jpg" style="flex: 0 0 100%; height: 50vw; max-height: 400px; object-fit: cover;">
-                
             </div>
     <h2>Let's get you started with facilitating users with yours cravans</h2>
-    <body>
-
+</body>
+</html>
