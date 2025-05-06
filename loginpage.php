@@ -13,7 +13,6 @@ session_start();
         {
             //read from database
             $query = "select * from register_form where username = '$username' limit 1";
-
             $result = mysqli_query($con, $query);
 
             if($result)

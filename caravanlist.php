@@ -48,6 +48,7 @@
                     <th>Caravan Details</th>
                     <th>Caravan Image</th>
                     <th>Mobile Number</th>
+                    <th>Edit/Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,11 +59,11 @@
                             <td>$row[caravan_model]</td>
                             <td>$row[caravan_year]</td>
                             <td>$row[caravan_details]</td>
-                            <td>$row[caravan_image]</td>
+                            <td><img src='{$row['caravan_image']}' alt='Caravan Image' class='caravan-thumb'></td>
                             <td>$row[mobile_number]</td>
                             <td>
-                                <a class='btn btn-primary btn-sm' href='editcaravan.php'>Edit</a>
-                                <a class='btn btn-danger btn-sm' href='deletecaravan.php'>Delete</a>
+                                <a class='btn-edit' href='editcaravan.php'>Edit</a><br></br>
+                                <a class='btn-delete' href='deletecaravan.php'>Delete</a>
                             </td>
                         </tr>";
                 }

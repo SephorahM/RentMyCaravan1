@@ -337,7 +337,7 @@ button:hover {
 
 .table-container {
     margin: 100px auto 20px;
-    padding: 50px;
+    padding: 20px;
     background: teal;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
@@ -349,7 +349,6 @@ button:hover {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
-    margin-top: 20px;
     border-radius: 8px;
     overflow: hidden;
   }
@@ -359,12 +358,37 @@ button:hover {
     overflow-y: auto;
 }
   
-  table th, table td {
+.table th, table td {
     padding: 12px;
     border: 1px solid black;
     text-align: left;
     white-space: normal;
     color: black;
-  }
+    }
 
-  
+.btn-edit {
+    background: red;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-delete {
+    background: blue;
+    color: white;
+    padding: 8px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.caravan-thumb {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+}
