@@ -23,7 +23,7 @@ session_start();
             <a class="dropbtn">List Your Caravan</a>
             <div class="dropdown-content">
             <a href="addcaravan.php">Add Caravan</a>
-            <a href="deletecaravan.php">Delete Caravan</a>
+            <a href="caravanlist.php">Your Caravan List</a>
             </div>
         </div>
         <a href="caravansummary.php">Caravan Summary</a>
