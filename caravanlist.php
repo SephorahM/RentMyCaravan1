@@ -37,7 +37,7 @@
         <a href="logout.php">Logout</a>
     </div>
     <div id="caravan-list" class="table-container" style="background: teal;">
-        <h1>You Caravan List</h1>
+        <h1>Your Caravan List</h1>
         <div class="table">
         <table class="table">
             <thead>
@@ -62,8 +62,8 @@
                             <td><img src='{$row['caravan_image']}' alt='Caravan Image' class='caravan-thumb'></td>
                             <td>$row[mobile_number]</td>
                             <td>
-                                <a class='btn-edit' href='editcaravan.php'>Edit</a><br></br>
-                                <a class='btn-delete' href='deletecaravan.php'>Delete</a>
+                                <a class='btn btn-edit' href='editcaravan.php?id={$row['id']}'>Edit</a><br></br>
+                                <a class='btn btn-delete' href='deletecaravan.php'>Delete</a>
                             </td>
                         </tr>";
                 }

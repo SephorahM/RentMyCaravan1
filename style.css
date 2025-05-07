@@ -367,7 +367,7 @@ button:hover {
     }
 
 .btn-edit {
-    background: red;
+    background: blue !important;
     color: white;
     padding: 8px 10px;
     cursor: pointer;
@@ -377,7 +377,7 @@ button:hover {
 }
 
 .btn-delete {
-    background: blue;
+    background: red !important;
     color: white;
     padding: 8px 10px;
     cursor: pointer;
@@ -391,4 +391,14 @@ button:hover {
     height: auto;
     border-radius: 8px;
     object-fit: cover;
+}
+
+.btn-cancel {
+    background: red;
+    color: white;
+    padding: 12px 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    transition: background 0.3s ease, transform 0.2s ease;
 }

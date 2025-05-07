@@ -29,7 +29,7 @@ session_start();
 
             mysqli_query($con, $query);
 
-            header("Location: caravansummary.php");
+            header("Location: caravanlist.php");
             die;
         }else
         {
