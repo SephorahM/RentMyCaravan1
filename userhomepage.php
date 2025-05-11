@@ -16,7 +16,7 @@ session_start();
     <link rel="stylesheet" href="style.css">
     <title>User Home Page</title>
 </head>
-<body>
+<body class="<?php echo isset($_SESSION['user_id']) ? 'logged-in' : 'logged_out'; ?>">
     <div class="navbar">
         <a href="userhomepage.php">Home</a>
         <div class="dropdown">
@@ -37,6 +37,5 @@ session_start();
     </div>
     <h2>Let's get you started with renting your caravans</h2>
     <button onclick="window.location.href='addcaravan.php'" style="margin: 20px 0; padding: 10px 20px; background: orange; color: white; border: none; cursor: pointer;">Add a Caravan</button>
-
 </body>
 </html>

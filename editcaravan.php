@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     <link rel="stylesheet" href="style.css">
     <title>Edit Page</title>
 </head>
-<body>
+<body class="<?php echo isset($_SESSION['user_id']) ? 'logged-in' : 'logged_out'; ?>">
     <div class="navbar">
         <a href="userhomepage.php">Home</a>
         <div class="dropdown">

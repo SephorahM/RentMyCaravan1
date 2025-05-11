@@ -1,10 +1,9 @@
 <?php
-// Start of PHP section to fetch caravan data
 $caravans = [];
 
 $servername = "localhost";
-$username = "root"; // change if needed
-$password = "";     // change if needed
+$username = "root";
+$password = "";
 $dbname = "rentmycaravan";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -29,7 +28,6 @@ $conn->close();
 <head>
   <meta charset="UTF-8">
   <title>Caravan Summary</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
@@ -38,8 +36,63 @@ $conn->close();
       background-size: cover;
     }
 
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffe6f0;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 1.1em;
+      flex-wrap: wrap;
+    }
+
+    .navbar a, .dropbtn {
+      text-decoration: none;
+      color: #d65b91;
+      padding: 12px 18px;
+      margin: 0 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .navbar a:hover, .dropbtn:hover {
+      background-color: #fddcef;
+      color: #b03e73;
+      border-radius: 8px;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff8fc;
+      min-width: 180px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 8px;
+    }
+
+    .dropdown-content a {
+      color: #d65b91;
+      padding: 10px 16px;
+      display: block;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #fddcef;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
     .overlay {
-      background-color: rgba(255, 255, 255, 0.2); /* 20% blur effect */
+      background-color: rgba(255, 255, 255, 0.85);
       min-height: 100vh;
       padding: 40px 20px;
       text-align: center;
@@ -72,6 +125,11 @@ $conn->close();
       max-width: 400px;
       box-shadow: 0 6px 14px rgba(0,0,0,0.2);
       cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
     }
 
     .card img {
@@ -132,24 +190,24 @@ $conn->close();
 <body>
 
 <div class="navbar">
-        <a href="userhomepage.php">Home</a>
-        <div class="dropdown">
-            <a class="dropbtn">List Your Caravan</a>
-            <div class="dropdown-content">
-            <a href="addcaravan.php">Add Caravan</a>
-            <a href="caravanlist.php">Your Caravan List</a>
-            </div>
-        </div>
-        <a href="caravansummary.php">Caravan Summary</a>
-        <a href="logout.php">Logout</a>
+  <a href="userhomepage.php">Home</a>
+  <div class="dropdown">
+    <a class="dropbtn">List Your Caravan</a>
+    <div class="dropdown-content">
+      <a href="addcaravan.php">Add Caravan</a>
+      <a href="caravanlist.php">Your Caravan List</a>
     </div>
+  </div>
+  <a href="caravansummary.php">Caravan Summary</a>
+  <a href="logout.php">Logout</a>
+</div>
 
 <div class="overlay" id="caravanContainer">
   <h1>Caravan Summary</h1>
 
   <?php if (count($caravans) === 0): ?>
     <div class="no-caravans">
-      🚐 No caravans added yet.<br>Please <a href="#">add a caravan</a> first!
+      🚐 No caravans added yet.<br>Please <a href="addcaravan.php">add a caravan</a> first!
     </div>
   <?php else: ?>
     <?php foreach ($caravans as $index => $caravan): ?>

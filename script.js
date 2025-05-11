@@ -232,3 +232,8 @@ function prevSlide() {
     currentSlide = (currentSlide - 1 + slides) % slides;
     carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
 }
+
+function userIsLoggedIn() {
+    document.body.classList.add("logged-in");
+    document.body.classList.remove("logged-out");
+}
