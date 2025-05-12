@@ -95,7 +95,7 @@ body.logged-in {
 .container {
     margin: 100px auto 20px;
     padding: 50px;
-    background: darkturquoise;
+    background: teal;
     border-radius: 20px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
     width: 50%;
