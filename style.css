@@ -189,7 +189,7 @@ button:hover {
 }
 
 .btn-add-caravan {
-    background: #ff9800; /* Set a distinct orange color */
+    background: orange; /* Set a distinct orange color */
     color: white;
     border: none;
     padding: 12px 20px;
