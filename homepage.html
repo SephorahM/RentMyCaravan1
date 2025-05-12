@@ -16,22 +16,24 @@
          
         <div id="home" class="container active" style="background: teal;">
         <h1>Welcome to Rent My Caravan</h1>
-        <p>Explore the freedom of renting your caravans to others. Your renting adventure starts here!</p>
+        <p>Explore the freedom of the caravans and open roads with our cozy caravans. Your adventure starts here!</p>
         
         <!-- Carousel for Featured Caravans -->
-        <div class="carousel" style="margin: 20px auto; width: 90%; max-width: 1200px; overflow: hidden; border-radius: 10px; position: relative;">
-            <div class="carousel-inner" style="display: flex; transition: transform 0.5s ease; width: 100%;">
+        <div class="carousel" style="margin: 20px auto; width: 100%; max-width: 1200px; overflow: hidden; border-radius: 10px; position: relative;">
+            <div class="carousel-inner" id="carouselInner" style="display: flex; transition: transform 0.5s ease; width: 300%;">
                 <img src="https://i.pinimg.com/550x/93/a3/8e/93a38e577b1daf238b4c7d0f4fb4d338.jpg" alt="Luxury Caravan" style="flex: 0 0 100%; height: 50vw; max-height: 400px; object-fit: cover;">
                 <img src="https://i.ytimg.com/vi/Diy0kBC5abo/maxresdefault.jpg" alt="Compact Caravan" style="flex: 0 0 100%; height: 50vw; max-height: 400px; object-fit: cover;">
                 <img src="https://www.sussexsportscars.co.uk/car_images/uploads/2014/10/001.jpg" alt="Classic Caravan" style="flex: 0 0 100%; height: 50vw; max-height: 400px; object-fit: cover;">
             </div>
+            <button onclick="prevSlide()" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; z-index: 10;">&#10094;</button>
+            <button onclick="nextSlide()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; z-index: 10;">&#10095;</button>
         </div>
         
         <!-- Testimonial Section -->
         <div class="testimonials" style="margin: 40px auto; text-align: center;">
             <h2>What Our Customers Say</h2>
-            <p style="font-style: italic; margin: 20px 0;">"Rent My Caravan made our road trip unforgettable! The caravan was cozy and well-equipped."</p>
-            <p style="font-style: italic; margin: 20px 0;">"Amazing service and affordable pricing. Highly recommend!"</p>
+            <p style="font-style: italic; margin: 20px 0;">"Rent My caravan made it easy to upload caravans and makethem available for other and making their road trip unforgettable.Making user account and uploading caravans is convenient on website."</p>
+            <p style="font-style: italic; margin: 20px 0;">"Amazing service. Highly recommend!"</p>
         </div>
         
         <!-- Additional Caravan Details -->
@@ -56,17 +58,17 @@
                 <div style="width: 30%; text-align: center;">
                     <img src="https://www.shutterstock.com/image-photo/person-browsing-internet-on-laptop-260nw-636371558.jpg" alt="Step 1" style="width: 80px; height: 80px;">
                     <h3>Step 1</h3>
-                    <p>Browse our wide range of caravans and choose the one that suits your needs.</p>
+                    <p>Log in to your account or create a new one to get started.</p>
                 </div>
                 <div style="width: 30%; text-align: center;">
                     <img src="https://www.bookitlive.net/content/wp-content/uploads/2021/03/How-does-booking-system-work.jpg" alt="Step 2" style="width: 80px; height: 80px;">
                     <h3>Step 2</h3>
-                    <p>Book your caravan online with our easy-to-use booking system.</p>
+                    <p>Upload details and images of your caravan using our simple form.</p>
                 </div>
                 <div style="width: 30%; text-align: center;">
                     <img src="https://www.fluxmagazine.com/wp-content/uploads/2019/07/Adventure-Web-1.jpg" alt="Step 3" style="width: 80px; height: 80px;">
                     <h3>Step 3</h3>
-                    <p>Pick up your caravan and start your adventure on the open road!</p>
+                    <p>Manage bookings and connect with travelers looking for caravans.</p>
                 </div>
             </div>
         </div>
@@ -76,33 +78,54 @@
             <h2>Why Choose Us?</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
                 <div style="width: 45%; text-align: center;">
-                    <img src="https://media.istockphoto.com/id/1085310932/photo/hand-is-turning-a-dice-and-changes-the-direction-of-an-arrow-symbolizing-that-the-price-is.jpg?s=612x612&w=0&k=20&c=c1kxK3U1NaQwXnUsgZ7JwhArKAH2jestytPx-KlVAAs=" alt="Affordable Pricing" style="width: 80px; height: 80px;">
-                    <h3>Affordable Pricing</h3>
-                    <p>We offer competitive pricing with no hidden costs, ensuring value for your money.</p>
+                    <img src="https://media.istockphoto.com/id/1085310932/photo/hand-is-turning-a-dice-and-changes-the-direction-of-an-arrow-symbolizing-that-the-price-is.jpg?s=612x612&w=0&k=20&c=c1kxK3U1NaQwXnUsgZ7JwhArKAH2jestytPx-KlVAAs=" alt="Earn Extra Income" style="width: 80px; height: 80px;">
+                    <h3>Earn Extra Income</h3>
+                    <p>Monetize your caravan by renting it out to travelers and earn passive income.</p>
                 </div>
                 <div style="width: 45%; text-align: center;">
                     <img src="https://img.freepik.com/premium-vector/24-7-support-icon-online-support-twenty-four-seven-vector_608466-89.jpg" alt="24/7 Support" style="width: 80px; height: 80px;">
                     <h3>24/7 Support</h3>
-                    <p>Our dedicated support team is available around the clock to assist you.</p>
+                    <p>Our team is available around the clock to assist you with managing your listings.</p>
                 </div>
                 <div style="width: 45%; text-align: center;">
-                    <img src="https://couplandscaravans.co.uk/volumes/images/_fullBackgroundBlockMobile/633096/Swift-Sprite.png" alt="Wide Selection" style="width: 80px; height: 80px;">
-                    <h3>Wide Selection</h3>
-                    <p>Choose from a variety of caravans to suit your travel style and preferences.</p>
+                    <img src="https://couplandscaravans.co.uk/volumes/images/_fullBackgroundBlockMobile/633096/Swift-Sprite.png" alt="Wide Audience" style="width: 80px; height: 80px;">
+                    <h3>Wide Audience</h3>
+                    <p>Reach a large community of travelers looking for unique caravan experiences.</p>
                 </div>
                 <div style="width: 45%; text-align: center;">
-                    <img src="https://thumbs.dreamstime.com/z/modern-caravans-trailers-campers-feature-stylish-functional-interior-designs-range-amenities-comfortable-mobile-305076597.jpg" alt="Modern Amenities" style="width: 80px; height: 80px;">
-                    <h3>Modern Amenities</h3>
-                    <p>Our caravans are equipped with the latest features for a comfortable journey.</p>
+                    <img src="https://thumbs.dreamstime.com/z/modern-caravans-trailers-campers-feature-stylish-functional-interior-designs-range-amenities-comfortable-mobile-305076597.jpg" alt="Easy Management" style="width: 80px; height: 80px;">
+                    <h3>Easy Management</h3>
+                    <p>Our platform provides tools to easily manage bookings and communicate with renters.</p>
                 </div>
             </div>
         </div>
         
         <!-- Call-to-Action Button -->
         <div style="margin-top: 30px;">
-            <button class="btn" onclick="window.location.href='loginpage.php'">Click to login</button>
+            <button class="btn" onclick="window.location.href='loginpage.html'">Click to login</button>
         </div>
         </div>
         <script src="script.js"></script>
+        <script>
+            // JavaScript for carousel functionality
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const carouselInner = document.getElementById('carouselInner');
+                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            function prevSlide() {
+                const totalSlides = document.querySelectorAll('#carouselInner img').length;
+                currentIndex = (currentIndex === 0) ? totalSlides - 1 : currentIndex - 1;
+                updateCarousel();
+            }
+
+            function nextSlide() {
+                const totalSlides = document.querySelectorAll('#carouselInner img').length;
+                currentIndex = (currentIndex === totalSlides - 1) ? 0 : currentIndex + 1;
+                updateCarousel();
+            }
+        </script>
 </body>
 </html>
