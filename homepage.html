@@ -20,10 +20,10 @@
         
         <!-- Carousel for Featured Caravans -->
         <div class="carousel" style="margin: 20px auto; width: 100%; max-width: 1200px; overflow: hidden; border-radius: 10px; position: relative;">
-            <div class="carousel-inner" id="carouselInner" style="display: flex; transition: transform 0.5s ease; width: 300%;">
-                <img src="https://i.pinimg.com/550x/93/a3/8e/93a38e577b1daf238b4c7d0f4fb4d338.jpg" alt="Luxury Caravan" style="flex: 0 0 100%; height: 50vw; max-height: 400px; object-fit: cover;">
-                <img src="https://i.ytimg.com/vi/Diy0kBC5abo/maxresdefault.jpg" alt="Compact Caravan" style="flex: 0 0 100%; height: 50vw; max-height: 400px; object-fit: cover;">
-                <img src="https://www.sussexsportscars.co.uk/car_images/uploads/2014/10/001.jpg" alt="Classic Caravan" style="flex: 0 0 100%; height: 50vw; max-height: 400px; object-fit: cover;">
+            <div class="carousel-inner" id="carouselInner" style="display: flex; justify-content: center; align-items: center; transition: transform 0.5s ease; width: 300%; height: 60vh; max-height: 600px;">
+                <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FyYXZhbnxlbnwwfHwwfHx8MA%3D%3D" alt="Luxury Caravan" style="flex: 0 0 33.33%; width: 100%; height: 100%; object-fit: cover; margin-right: 5px;">
+                <img src="https://www.go-barefoot.co.uk/wp-content/uploads/2024/04/IMG_7394-1-scaled.jpeg" alt="Compact Caravan" style="flex: 0 0 33.33%; width: 100%; height: 100%; object-fit: cover; margin-left: 5px; margin-right: 5px;">
+                <img src="https://www.truma.com/wp-content/uploads/truma-guide-loading-caravan-1920x1080-1.webp" alt="Classic Caravan" style="flex: 0 0 33.33%; width: 100%; height: 100%; object-fit: cover; margin-left: 5px;">
             </div>
             <button onclick="prevSlide()" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; z-index: 10;">&#10094;</button>
             <button onclick="nextSlide()" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0, 0, 0, 0.5); color: white; border: none; padding: 10px; z-index: 10;">&#10095;</button>
@@ -56,17 +56,17 @@
             <h2>How It Works</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 20px;">
                 <div style="width: 30%; text-align: center;">
-                    <img src="https://www.shutterstock.com/image-photo/person-browsing-internet-on-laptop-260nw-636371558.jpg" alt="Step 1" style="width: 80px; height: 80px;">
+                    <img src="https://thumbs.dreamstime.com/b/login-icon-button-vector-illustration-isolated-white-background-126999474.jpg" alt="Step 1" style="width: 80px; height: 80px;">
                     <h3>Step 1</h3>
                     <p>Log in to your account or create a new one to get started.</p>
                 </div>
                 <div style="width: 30%; text-align: center;">
-                    <img src="https://www.bookitlive.net/content/wp-content/uploads/2021/03/How-does-booking-system-work.jpg" alt="Step 2" style="width: 80px; height: 80px;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiNU61bFkEYs08Qatfl-S5PY4Dywiv5L7gqA&s" alt="Step 2" style="width: 80px; height: 80px;">
                     <h3>Step 2</h3>
                     <p>Upload details and images of your caravan using our simple form.</p>
                 </div>
-                <div style="width: 30%; text-align: center;">
-                    <img src="https://www.fluxmagazine.com/wp-content/uploads/2019/07/Adventure-Web-1.jpg" alt="Step 3" style="width: 80px; height: 80px;">
+                <div style="width: 50%; text-align: center;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_KqcoYdRvpCM9cxenTB9yPGzE7_UrkeH6wA&s" alt="Step 3" style="width: 80px; height: 80px;">
                     <h3>Step 3</h3>
                     <p>Manage bookings and connect with travelers looking for caravans.</p>
                 </div>
@@ -102,7 +102,7 @@
         
         <!-- Call-to-Action Button -->
         <div style="margin-top: 30px;">
-            <button class="btn" onclick="window.location.href='loginpage.php'">Click to login</button>
+            <button class="btn" onclick="window.location.href='loginpage.html'">Click to login</button>
         </div>
         </div>
         <script src="script.js"></script>
@@ -112,7 +112,7 @@
 
             function updateCarousel() {
                 const carouselInner = document.getElementById('carouselInner');
-                carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+                carouselInner.style.transform = `translateX(-${currentIndex * 33.33}%)`; // Adjusted to match the new width
             }
 
             function prevSlide() {
