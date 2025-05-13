@@ -3,6 +3,8 @@ session_start();
     include("connectregister.php");
     include("check_login.php");
 
+    $login_error = false; // Track login error
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         //something was posted
@@ -27,13 +29,12 @@ session_start();
                         header("Location: userhomepage.php");
                         die;
                     }
-                    echo "Logged in ID: " . $user_data['user_id'];
                 } 
             }
             
-            echo "Wrong username or password!";
+            $login_error = true;
         } else {
-            echo "Please enter vailid information!";
+            $login_error = true;
         }
     }
 ?>
@@ -60,13 +61,15 @@ session_start();
         <input type="text" id="login-username" placeholder="Username" name="username">
         <input type="password" id="login-password" placeholder="Password" name="password">        
         <button type="submit">Login</button>
-        <!---<a href="userhomepage.php" onclick="showSection('login')">Login</a> --->
-
-        <!---<p id="login-error" class="error"></p>--->
         <p>Don't have an account? <a href="registerpage.php" onclick="showSection('register')">Sign Up</a></p>
         </form>
         </div>
         </div>
     <script src="script.js"></script>
+    <?php if ($login_error): ?>
+    <script>
+        alert("Wrong username or password!");
+    </script>
+    <?php endif; ?>
     </body>
 </html>
