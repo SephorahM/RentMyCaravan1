@@ -152,7 +152,7 @@ input {
 }
 
 /* Add this for the sign up button specifically */
-input[type="submit"]#button {
+input[type="Sign Up"]#button {
     background: #1976d2;
     color: #fff;
     border: none;
@@ -160,7 +160,7 @@ input[type="submit"]#button {
     transition: background 0.3s;
 }
 
-input[type="submit"]#button:hover {
+input[type="Sign Up"]#button:hover {
     background: #1565c0;
 }
 
