@@ -151,6 +151,19 @@ input {
     transition: box-shadow 0.3s ease;
 }
 
+/* Add this for the sign up button specifically */
+input[type="submit"]#button {
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="submit"]#button:hover {
+    background: #1565c0;
+}
+
 input:focus {
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     outline: none;
