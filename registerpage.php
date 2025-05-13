@@ -3,6 +3,7 @@ session_start();
     include("connectregister.php");
     include("check_login.php");
 
+    $username_exists = false;
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -13,18 +14,19 @@ session_start();
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirmPassword'];
 
-        if(!empty($lastName) && !empty($username) && !empty($password) && $password === $confirmPassword && !is_numeric($username))
-        {
+        // Check if username already exists
+        $check_query = "SELECT * FROM register_form WHERE username = '$username' LIMIT 1";
+        $check_result = mysqli_query($con, $check_query);
+        if ($check_result && mysqli_num_rows($check_result) > 0) {
+            $username_exists = true;
+        } else if(!empty($lastName) && !empty($username) && !empty($password) && $password === $confirmPassword && !is_numeric($username)) {
             //save to database
             $user_id = random_number(20);
             $query = "insert into register_form (user_id, firstName, lastName, username, password, confirmPassword) values ('$user_id', '$firstName', '$lastName', '$username', '$password', '$confirmPassword')";
-
             mysqli_query($con, $query);
-
             header("Location: loginpage.php");
             die;
-        }else
-        {
+        } else {
             echo "Please enter vailid information!";
         }
     }
@@ -61,5 +63,10 @@ session_start();
         </div>
         </div>
         <script src="script.js"></script>
+        <?php if ($username_exists): ?>
+        <script>
+            alert("Username already exists, please try something else.");
+        </script>
+        <?php endif; ?>
 </body>
 </html>
