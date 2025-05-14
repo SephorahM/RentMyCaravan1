@@ -17,6 +17,8 @@ session_start();
             die;
         }        
 
+$error_message = "";
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     //something was posted
     $caravan_make = $_POST['caravan_make'];
@@ -26,20 +28,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $caravan_image = $_POST['caravan_image'];
     $mobile_number = $_POST['mobile_number'];
 
-    $update_query = "update caravan_db set
-        caravan_make = '$caravan_make',
-        caravan_model = '$caravan_model',
-        caravan_year = '$caravan_year',
-        caravan_details = '$caravan_details',
-        caravan_image = '$caravan_image',
-        mobile_number = '$mobile_number'
-        WHERE user_id = '$user_id' and id = '$id'";
-
-    if (mysqli_query($con, $update_query)) {
-        header("Location: caravanlist.php");
-        exit;
+    if (!ctype_digit($mobile_number)) {
+        $error_message = "Please enter a valid numeric mobile number!";
     } else {
-        echo "Error updating record: " . mysqli_error($con);
+        $update_query = "update caravan_db set
+            caravan_make = '$caravan_make',
+            caravan_model = '$caravan_model',
+            caravan_year = '$caravan_year',
+            caravan_details = '$caravan_details',
+            caravan_image = '$caravan_image',
+            mobile_number = '$mobile_number'
+            WHERE user_id = '$user_id' and id = '$id'";
+
+        if (mysqli_query($con, $update_query)) {
+            header("Location: caravanlist.php");
+            exit;
+        } else {
+            echo "Error updating record: " . mysqli_error($con);
+        }
     }
 }
 
@@ -68,6 +74,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     <div class="container">
         <h1>Edit Your Caravan</h1>
         <div class="form-container">
+        <?php if ($error_message): ?>
+            <script>
+                alert("<?php echo $error_message; ?>");
+            </script>
+        <?php endif; ?>
         <form method="post">
             <input type="hidden" name="id" value="<?php echo $id; ?>">
             <input type="text" id="register-caravan-make" placeholder="Caravan Make" name="caravan_make" value="<?php echo $row['caravan_make']; ?>" required>
