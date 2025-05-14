@@ -67,9 +67,9 @@ session_start();
     <div id="add-caravan" class="container" style="background: teal;">
         <h1>Add Your Caravan</h1>
         <div class="form-container">
-            <?php if ($error_message = "Please enter neumeric mobile number!"): ?>
+            <?php if ($error_message == "Please enter neumeric mobile number!"): ?>
                 <script>
-                    alert("Please enter vailid information!");
+                    alert("Please enter numeric mobile number!");
                 </script>
             <?php endif; ?>
             <form id="add-caravan-form" action="addcaravan.php" method="POST">
