@@ -66,7 +66,7 @@
                                 <td>$row[mobile_number]</td>
                                 <td>
                                     <a class='btn btn-edit' href='editcaravan.php?id={$row['id']}'>Edit</a><br></br>
-                                    <a class='btn btn-delete' href='deletecaravan.php'>Delete</a>
+                                    <a class='btn btn-delete' href='deletecaravan.php?id={$row['id']}'>Delete</a>
                                 </td>
                             </tr>";
                     }
