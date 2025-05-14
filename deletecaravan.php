@@ -1,32 +1,42 @@
 <?php
 session_start();
-
 include("connectregister.php");
 include("check_login.php");
 
 $user_data = check_login($con);
 $user_id = $_SESSION['user_id'];
 
-// Get caravan ID from URL
 if (!isset($_GET['id'])) {
-    echo "<div style='text-align:center; color: red; margin-top: 20px;'>No caravan selected for deletion.</div>";
+    echo "<script>alert('No caravan selected for deletion.'); window.location.href='caravanlist.php';</script>";
     exit;
 }
 
 $caravan_id = intval($_GET['id']);
 
-// Fetch the specific caravan
 $stmt = $con->prepare("SELECT * FROM caravan_db WHERE id = ? AND user_id = ?");
 $stmt->bind_param("is", $caravan_id, $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    echo "<div style='text-align:center; color: red; margin-top: 20px;'>Caravan not found or access denied.</div>";
+    echo "<script>alert('Caravan not found or access denied.'); window.location.href='caravanlist.php';</script>";
     exit;
 }
 
 $row = $result->fetch_assoc();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
+    $delete_stmt = $con->prepare("DELETE FROM caravan_db WHERE id = ? AND user_id = ?");
+    $delete_stmt->bind_param("is", $caravan_id, $user_id);
+    $delete_stmt->execute();
+
+    if ($delete_stmt->affected_rows > 0) {
+        echo "<script>alert('Caravan successfully deleted.'); window.location.href='caravanlist.php';</script>";
+        exit;
+    } else {
+        echo "<script>alert('Failed to delete caravan.');</script>";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,23 +50,24 @@ $row = $result->fetch_assoc();
       font-family: 'Segoe UI', sans-serif;
       background: url('https://www.scottishtourer.co.uk/desktop/web/ckfinder/userfiles/files/IMG_2576(1).JPG') no-repeat center center fixed;
       background-size: cover;
-      color: #333;
+      color: black;
     }
     .container {
-      background: rgba(255, 255, 255, 0.9);
+      background-color: teal;
       max-width: 1000px;
       margin: 50px auto;
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      opacity: 1;
     }
     h1 {
       text-align: center;
-      color: #c0392b;
+      color: crimson;
     }
     .caravan-card {
-      background: #f3f8ff;
-      border: 1px solid #c0d7ec;
+      background-color: aliceblue;
+      border: 1px solid lightsteelblue;
       padding: 20px;
       margin: 20px 0;
       border-radius: 12px;
@@ -65,7 +76,7 @@ $row = $result->fetch_assoc();
       gap: 20px;
     }
     .caravan-card img {
-      width: 160px;
+      width: 160px; 
       height: 100px;
       object-fit: cover;
       border-radius: 10px;
@@ -75,11 +86,11 @@ $row = $result->fetch_assoc();
     }
     .caravan-info h3 {
       margin: 0;
-      color: #34577c;
+      color: darkslateblue;
     }
     .caravan-info p {
       margin: 5px 0;
-      color: #666;
+      color: dimgray;
     }
     .buttons {
       display: flex;
@@ -96,11 +107,11 @@ $row = $result->fetch_assoc();
       cursor: pointer;
     }
     .buttons button {
-      background-color: #e74c3c;
+      background-color: firebrick;
       color: white;
     }
     .buttons a {
-      background-color: #7f8c8d;
+      background-color: slategray;
       color: white;
     }
   </style>
@@ -119,7 +130,7 @@ $row = $result->fetch_assoc();
     </div>
   </div>
 
-  <form action="deletecaravan_confirm.php" method="post" class="buttons">
+  <form method="post" class="buttons">
     <input type="hidden" name="id" value="<?= $row['id'] ?>">
     <button type="submit">Yes, Delete</button>
     <a href="caravanlist.php">Cancel</a>
