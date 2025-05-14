@@ -10,6 +10,8 @@ session_start();
         die("User not logged in. Session ID missing.");
     }
 
+    $error_message = "";
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         //something was posted
@@ -21,19 +23,22 @@ session_start();
         $caravan_image = $_POST['caravan_image'];
         $mobile_number = $_POST['mobile_number'];
 
-        if(!empty($user_id) && !empty($caravan_make) && !empty($caravan_model) && !empty($caravan_year) && !empty($caravan_details) &&!empty($caravan_image) && ctype_digit($mobile_number))
-        {
-            //save to database
-            $query = "insert into caravan_db (user_id, caravan_make, caravan_model, caravan_year, caravan_details, caravan_image, mobile_number)
-            values ('$user_id', '$caravan_make', '$caravan_model', '$caravan_year', '$caravan_details','$caravan_image', '$mobile_number')";
+        if(!empty($user_id) && !empty($caravan_make) && !empty($caravan_model) && !empty($caravan_year) && !empty($caravan_details) &&!empty($caravan_image))
+        { 
+            if (!ctype_digit($mobile_number)) {
+            $error_message = "Please enter neumeric mobile number!";
+            } else {
+                //save to database
+                $query = "insert into caravan_db (user_id, caravan_make, caravan_model, caravan_year, caravan_details, caravan_image, mobile_number)
+                values ('$user_id', '$caravan_make', '$caravan_model', '$caravan_year', '$caravan_details','$caravan_image', '$mobile_number')";
 
-            mysqli_query($con, $query);
+                mysqli_query($con, $query);
 
-            header("Location: caravanlist.php");
-            die;
-        }else
-        {
-            echo "Please enter vailid information!";
+                header("Location: caravanlist.php");
+                die;
+            }
+        } else {
+            $error_message = "Please enter vailid information!";
         }
     }
 ?>
@@ -62,6 +67,11 @@ session_start();
     <div id="add-caravan" class="container" style="background: teal;">
         <h1>Add Your Caravan</h1>
         <div class="form-container">
+            <?php if ($error_message = "Please enter neumeric mobile number!"): ?>
+                <script>
+                    alert("Please enter vailid information!");
+                </script>
+            <?php endif; ?>
             <form id="add-caravan-form" action="addcaravan.php" method="POST">
                 <input type="text" id="register-caravan-make" placeholder="Caravan Make" name="caravan_make" required>
                 <input type="text" id="register-caravan-model" placeholder="Caravan Model" name="caravan_model" required>
@@ -69,13 +79,6 @@ session_start();
                 <textarea id="caravan-details" placeholder="Caravan Details" name="caravan_details" rows="4" required style="width: 100%;"></textarea>
                 <input type="url" id="caravan-image" placeholder="Caravan Image URL" name="caravan_image" required>
                 <input type="numbers" id="mobile-number" placeholder="Mobile Number" name="mobile_number" required>
-
-                <!---<select id="caravan-type" required>
-                    <option value="" disabled selected>Select Caravan Type</option>
-                    <option value="Luxury">Luxury</option>
-                    <option value="Compact">Compact</option>
-                    <option value="Classic">Classic</option>
-                </select>--->
                 <button type="submit">Add Caravan</button>
                 <p id="add-caravan-error" class="error"></p>
             </form>

@@ -240,10 +240,16 @@ button:hover {
 }
 
 .error {
-    color: red;
-    font-size: 0.9rem;
-    margin-top: 10px;
+    display: none;
+    background: red;
+    color: white;
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
 }
+
 
 @media (max-width: 768px) {
     h1 {
@@ -459,4 +465,16 @@ button:hover {
         width: 100%;
         padding: 0 10px;
     }
+}
+
+.popup-error {
+    background-color: Red;
+    color: Red;
+    padding: 15px 20px;
+    margin-top: 15px;
+    border-radius: 10px;
+    font-size: 1rem;
+    animation: fadeIn 0.5s ease-in-out;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    text-align: center;
 }
