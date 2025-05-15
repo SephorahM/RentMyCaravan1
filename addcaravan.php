@@ -5,6 +5,8 @@ session_start();
     include("check_login.php");
 
     $user_data = check_login($con);
+    $user_id = $_SESSION['user_id'];
+
 
     if (!isset($_SESSION['user_id'])) {
         die("User not logged in. Session ID missing.");
@@ -72,13 +74,23 @@ session_start();
                     alert("Invalid mobile number! Please enter only numeric digits (no alphabets or special characters).");
                 </script>
             <?php endif; ?>
+            <?php
+            $last_mobile_query = "SELECT mobile_number FROM caravan_db WHERE user_id = '$user_id' ORDER BY id DESC LIMIT 1";
+            $last_mobile_result = mysqli_query($con, $last_mobile_query);
+            $prefill_mobile = "";
+
+            if ($last_mobile_result && mysqli_num_rows($last_mobile_result) > 0) {
+                $row = mysqli_fetch_assoc($last_mobile_result);
+                $prefill_mobile = htmlspecialchars($row['mobile_number']);
+            }
+            ?>
             <form id="add-caravan-form" action="addcaravan.php" method="POST">
                 <input type="text" id="register-caravan-make" placeholder="Caravan Make" name="caravan_make" required>
                 <input type="text" id="register-caravan-model" placeholder="Caravan Model" name="caravan_model" required>
                 <input type="text" id="register-caravan-year" placeholder="Registration Year" name="caravan_year" required>
                 <textarea id="caravan-details" placeholder="Caravan Details" name="caravan_details" rows="4" required style="width: 100%;"></textarea>
                 <input type="url" id="caravan-image" placeholder="Caravan Image URL" name="caravan_image" required>
-                <input type="numbers" id="mobile-number" placeholder="Mobile Number" name="mobile_number" required>
+                <input type="text" id="mobile-number" placeholder="Mobile Number" name="mobile_number" value="<?php echo htmlspecialchars($prefill_mobile ?? ''); ?>" required>
                 <button type="submit">Add Caravan</button>
                 <p id="add-caravan-error" class="error"></p>
             </form>
